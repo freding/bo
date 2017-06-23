@@ -41,63 +41,71 @@ class Product
     private $labels;
     
     
-    function __construct() {
+    public function __construct()
+    {
         $this->labels = new ArrayCollection();
     }
 
      /**
      * @return int
      */
-    function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return string
-     */    
-    function getName() {
+     */
+    public function getName()
+    {
         return $this->name;
     }
 
     /**
      * @return float
      */
-    function getPrice() {
+    public function getPrice()
+    {
         return $this->price;
     }
 
     /**
      * @return string
      */
-    function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
     /**
      * @param int $id
      * @return Product
-     */    
-    function setId($id) {
+     */
+    public function setId($id)
+    {
         $this->id = $id;
         
-        return $this;        
+        return $this;
     }
 
     /**
      * @param string $name
      * @return Product
      */
-    function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
-        return $this;        
+        return $this;
     }
 
     /**
      * @param float $price
      * @return Product
      */
-    function setPrice($price) {
+    public function setPrice($price)
+    {
         $this->price = $price;
         
         return $this;
@@ -107,13 +115,10 @@ class Product
      * @param string $description
      * @return Product
      */
-    function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
         
         return $this;
     }
-
-
-
-    
 }

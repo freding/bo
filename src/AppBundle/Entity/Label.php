@@ -30,34 +30,38 @@ class Label
     /**
      * @ManyToMany(targetEntity="Product", mappedBy="labels")
      */
-    private $products;    
+    private $products;
     
     /**
      * @return int
      */
-    function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
     /**
      * @return string
      */
-    function getColor() {
+    public function getColor()
+    {
         return $this->color;
     }
 
-    /** 
+    /**
      * @param int $id
      * @return Label
      */
-    function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
         
         return $this;
@@ -67,21 +71,21 @@ class Label
      * @param string $name
      * @return Label
      */
-    function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
         
-        return $this;        
+        return $this;
     }
 
     /**
      * @param string $color
      * @return Label
      */
-    function setColor($color) {
+    public function setColor($color)
+    {
         $this->color = $color;
         
-        return $this;        
+        return $this;
     }
-    
-    
 }
