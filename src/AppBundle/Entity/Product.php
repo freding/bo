@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity
@@ -35,12 +36,14 @@ class Product
     
     
     /**
-     * @ManyToMany(targetEntity="Label", inversedBy="products")
-     * @JoinTable(name="products_labels")
+     * @ORM\ManyToMany(targetEntity="Label", inversedBy="products")
+     * @ORM\JoinTable(name="products_labels")
      */
     private $labels;
     
-    
+    /**
+     * {@ignore}
+     */
     public function __construct()
     {
         $this->labels = new ArrayCollection();
@@ -118,6 +121,41 @@ class Product
     public function setDescription($description)
     {
         $this->description = $description;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Label $label
+     * @return Product
+     */
+    public function addLabel(Label $label)
+    {
+        if (!$this->labels->contains($label)) {
+            $label->addProduct($this);
+            $this->labels[] = $label;
+        }
+            
+        return $this;
+    }
+    
+    /**
+     * @return Collection|Label[]
+     */
+    public function getLabels()
+    {
+        return $this->labels;
+    }
+    
+    /**
+     * @param Label $label
+     * @return Product
+     */
+    public function removeLabel(Label $label)
+    {
+        if ($this->labels->contains($label)) {
+            $this->labels->removeElement($label);
+        }
         
         return $this;
     }

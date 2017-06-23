@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity
@@ -28,9 +30,17 @@ class Label
     private $color;
 
     /**
-     * @ManyToMany(targetEntity="Product", mappedBy="labels")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="labels")
      */
     private $products;
+    
+    /**
+     * {@ignore}
+     */
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
     
     /**
      * @return int
@@ -85,6 +95,40 @@ class Label
     public function setColor($color)
     {
         $this->color = $color;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Product $product
+     * @return Label
+     */
+    public function addProduct(Product $product)
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+        }
+        
+        return $this;
+    }
+    
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+    
+    /**
+     * @param Product $product
+     * @return Label
+     */
+    public function removeProduct(Product $product)
+    {
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
+        }
         
         return $this;
     }
