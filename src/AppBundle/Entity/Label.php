@@ -5,14 +5,17 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Entity
  * @ORM\Table(name="label")
  */
 class Label
 {
     /**
+     * @Serializer\Expose
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -20,6 +23,7 @@ class Label
     private $id;
 
     /**
+     * @Serializer\Expose
      * @ORM\Column(type="string", length=100)
      */
     private $name;
