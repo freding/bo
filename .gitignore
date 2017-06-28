@@ -18,3 +18,4 @@
 /.data/*
 /docker-compose.yml
 /.env
+/logs/*
