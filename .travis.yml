@@ -42,4 +42,4 @@ script:
 
 # After a build, send email notification with the build results
 notifications:
-  email: frederic.bourbigot@gmail.com
+  slack: fbconsulting:s2mmtf26HLo5noAUScZXCmZ2
