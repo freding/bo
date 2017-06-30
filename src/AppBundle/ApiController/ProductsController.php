@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Entity\Product;
 use AppBundle\Form\Type\ProductType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use AppBundle\Exception\ApiValidationException;
 
 class ProductsController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductsController extends Controller
      * @Rest\Get("/products/{id}")
      * @ParamConverter("product", class="AppBundle:Product")
      */
-    public function getProductAction(Product $product = null)
+    public function getProductAction(Product $product)
     {
         return $product;
     }
@@ -53,7 +54,7 @@ class ProductsController extends Controller
             $em->flush();
             return $product;
         } else {
-            return $form;
+            throw new ApiValidationException($form->getErrors(true, false));
         }
         
     }
@@ -65,7 +66,7 @@ class ProductsController extends Controller
      * @Rest\Put("/products/{id}")
      * @ParamConverter("product", class="AppBundle:Product")
      */
-    public function putProductAction(Request $request, Product $product = null){
+    public function putProductAction(Request $request, Product $product){
         $form = $this->createForm(ProductType::class, $product);
         $form->submit($request->request->all());
 
@@ -75,7 +76,7 @@ class ProductsController extends Controller
             $em->flush();
             return $product;
         } else {
-            return $form;
+            throw new ApiValidationException($form->getErrors(true, false));
         }
         
     }
@@ -85,11 +86,8 @@ class ProductsController extends Controller
      * @Rest\Delete("/products/{id}")
      * @ParamConverter("product", class="AppBundle:Product")
      */
-    public function removePlaceAction(Product $product = null)
+    public function removePlaceAction(Product $product)
     {
-        if(empty($product)){
-            return new JsonResponse(['message' => 'Resource not found'], Response::HTTP_NOT_FOUND);
-        }
         $this->getDoctrine()->getManager()->remove($product);
         $this->getDoctrine()->getManager()->flush();
     }

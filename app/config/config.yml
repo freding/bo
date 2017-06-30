@@ -68,7 +68,7 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-fos_rest:
+fos_rest: 
     routing_loader:
         include_format: false
     view:

@@ -9,7 +9,9 @@
             <tag name="jms_serializer.event_subscriber"/>
         </service> 
         
-
+        <service id="app.exception_listener" class="AppBundle\EventListener\ApiExceptionListener">
+            <tag name="kernel.event_listener" event="kernel.exception" />
+        </service>
         
     </services>
 
