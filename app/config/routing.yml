@@ -4,4 +4,4 @@ app:
 
 products:
     type:   rest
-    resource: AppBundle\Controller\ProductsController
+    resource: AppBundle\ApiController\ProductsController

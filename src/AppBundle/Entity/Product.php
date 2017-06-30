@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use JMS\Serializer\Annotation as Serializer;
 use AppBundle\Component\Doctrine\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @Serializer\ExclusionPolicy("all")
@@ -25,23 +26,28 @@ class Product
 
     /**
      * @Serializer\Expose
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=100)
      */
     private $name;
 
     /**
+     * @Serializer\Expose
+     * @Assert\NotBlank()
+     * @Assert\Type("float")
      * @ORM\Column(type="decimal", scale=2)
      */
     private $price;
 
     /**
+     * @Serializer\Expose
+     * @Assert\NotBlank()
      * @ORM\Column(type="text")
      */
     private $description;
     
     
     /**
-     * @Serializer\Expose
      * @ORM\ManyToMany(targetEntity="Label", inversedBy="products")
      * @ORM\JoinTable(name="products_labels")
      */
