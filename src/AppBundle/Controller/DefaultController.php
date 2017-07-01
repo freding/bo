@@ -27,7 +27,7 @@ class DefaultController extends Controller
         
         /** @var Label[] $labels */
         $labels = $product->getLabels();
-        foreach ($labels as $label){
+        foreach ($labels as $label) {
             echo $label->getColor();
         }
         

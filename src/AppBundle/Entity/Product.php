@@ -10,6 +10,8 @@ use AppBundle\Component\Doctrine\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Products
+ * @author F.Bourbigot
  * @Serializer\ExclusionPolicy("all")
  * @ORM\Entity
  * @ORM\Table(name="product")
@@ -53,7 +55,7 @@ class Product
      */
     private $labels;
     
-    use TimestampableEntity;   
+    use TimestampableEntity;
     
     /**
      * {@ignore}

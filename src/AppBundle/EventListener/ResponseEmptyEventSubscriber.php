@@ -2,10 +2,13 @@
 
 namespace AppBundle\EventListener;
 
-
 use JMS\Serializer\EventDispatcher\EventSubscriberInterface;
 use JMS\Serializer\EventDispatcher\ObjectEvent;
 
+/**
+ * ResponseEmptyEventSubscriber
+ * @author F.Bourbigot
+ */
 class ResponseEmptyEventSubscriber implements EventSubscriberInterface
 {
     /**
@@ -27,6 +30,5 @@ class ResponseEmptyEventSubscriber implements EventSubscriberInterface
      */
     public function emptyChecker(ObjectEvent $event)
     {
-        
     }
 }

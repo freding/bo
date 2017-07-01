@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
+ * Label
+ * @author F.Bourbigot
  * @Serializer\ExclusionPolicy("all")
  * @ORM\Entity
  * @ORM\Table(name="label")

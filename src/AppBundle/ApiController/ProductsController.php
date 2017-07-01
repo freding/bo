@@ -14,6 +14,10 @@ use AppBundle\Form\Type\ProductType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Exception\ApiValidationException;
 
+/**
+* ProductsControllerTest
+* @author F.Bourbigot
+*/
 class ProductsController extends Controller
 {
 
@@ -42,7 +46,8 @@ class ProductsController extends Controller
      * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Post("/products")
      */
-    public function postProductAction(Request $request){
+    public function postProductAction(Request $request)
+    {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
 
@@ -56,7 +61,6 @@ class ProductsController extends Controller
         } else {
             throw new ApiValidationException($form->getErrors(true, false));
         }
-        
     }
     
     
@@ -66,7 +70,8 @@ class ProductsController extends Controller
      * @Rest\Put("/products/{id}")
      * @ParamConverter("product", class="AppBundle:Product")
      */
-    public function putProductAction(Request $request, Product $product){
+    public function putProductAction(Request $request, Product $product)
+    {
         $form = $this->createForm(ProductType::class, $product);
         $form->submit($request->request->all());
 
@@ -78,10 +83,9 @@ class ProductsController extends Controller
         } else {
             throw new ApiValidationException($form->getErrors(true, false));
         }
-        
     }
     
-     /**
+    /**
      * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
      * @Rest\Delete("/products/{id}")
      * @ParamConverter("product", class="AppBundle:Product")
@@ -91,6 +95,4 @@ class ProductsController extends Controller
         $this->getDoctrine()->getManager()->remove($product);
         $this->getDoctrine()->getManager()->flush();
     }
-    
-    
 }

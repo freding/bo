@@ -7,7 +7,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Timestampable Trait, usable with PHP >= 5.4
- *
+ * TimestampableEntity
+ * @author F.Bourbigot
  */
 trait TimestampableEntity
 {

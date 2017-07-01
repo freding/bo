@@ -2,7 +2,10 @@
 
 namespace AppBundle\Component\Response\Model;
 
-
+/**
+ * ApiErrorResponse
+ * @author F.Bourbigot
+ */
 class ApiErrorResponse
 {
     /**
@@ -13,7 +16,8 @@ class ApiErrorResponse
     /**
      * @return string
      */
-    function getMessage() {
+    public function getMessage()
+    {
         return $this->message;
     }
 
@@ -21,7 +25,8 @@ class ApiErrorResponse
      * @param string $message
      * @return ApiErrorResponse
      */
-    function setMessage($message) {
+    public function setMessage($message)
+    {
         $this->message = $message;
         return $this;
     }
