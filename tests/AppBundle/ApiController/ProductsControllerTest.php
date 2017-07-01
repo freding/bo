@@ -3,7 +3,7 @@
 namespace Tests\AppBundle\ApiController;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase;
-
+use Symfony\Component\HttpFoundation\Response;
 /**
 * ProductsControllerTest
 * @author F.Bourbigot
@@ -23,7 +23,6 @@ class ProductsControllerTest extends WebTestCase
     {
         $client = $this->createClient();
         $client->request('GET', '/products');
-        $response = $client->getResponse();
-        $this->assertJsonResponse($response, 200);
+        $this->assertStatusCode(Response::HTTP_OK, $client);
     }
 }
