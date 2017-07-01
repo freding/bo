@@ -2,7 +2,7 @@
 
 namespace Tests\AppBundle\ApiController;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 /**
 * ProductsControllerTest
