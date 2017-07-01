@@ -22,7 +22,7 @@ class ProductsControllerTest extends WebTestCase
     public function testGetProductAction()
     {
         $client = $this->createClient();
-        $this->execQuery($client, 'GET', null, '/products');
+        $client->request('GET', '/products');
         $response = $client->getResponse();
         $this->assertJsonResponse($response, 200);
     }
