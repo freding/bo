@@ -10,4 +10,20 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 */
 class ProductsControllerTest extends WebTestCase
 {
+    public function setUp()
+    {
+        parent::setup();
+        $fixtures = array(
+          'AppBundle\DataFixtures\ORM\LoadProductData',
+        );
+        $this->loadFixtures($fixtures);
+    }
+    
+    public function testGetProductAction()
+    {
+        $client = $this->createClient();
+        $this->execQuery($client, 'GET', null, '/products');
+        $response = $client->getResponse();
+        $this->assertJsonResponse($response, 200);
+    }
 }
