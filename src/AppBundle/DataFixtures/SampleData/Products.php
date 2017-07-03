@@ -42,4 +42,29 @@ final class Products implements SampleDataInterface
             ],
         ];
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public static function getValidOne()
+    {
+        return [
+            'name' => 'Product 4',
+            'price' => 300.00,
+            'description' => 'Description of last product',
+        ];
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public static function getUnvalidOne()
+    {
+        return [
+            'name' => 'Product 5',
+            'price' => 300.00,
+            'description' => '',
+        ];
+    }
+    
 }

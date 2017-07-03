@@ -18,4 +18,15 @@ interface SampleDataInterface
      * @return array
      */
     public static function get();
+    
+    /**
+     * @return array
+     */
+    public static function getValidOne();
+    
+    /**
+     * @return array
+     */      
+    public static function getUnvalidOne();            
+            
 }
